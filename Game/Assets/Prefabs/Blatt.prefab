@@ -22,7 +22,10 @@ GameObject:
   - component: {fileID: 33402077683803366}
   - component: {fileID: 23724371545592632}
   - component: {fileID: 65209330171050222}
-  - component: {fileID: 114499886011129250}
+  - component: {fileID: 114722787863270866}
+  - component: {fileID: 114597097956550540}
+  - component: {fileID: 114851239157964346}
+  - component: {fileID: 114930634889352690}
   m_Layer: 0
   m_Name: Blatt
   m_TagString: Untagged
@@ -38,7 +41,7 @@ Transform:
   m_GameObject: {fileID: 1689461795535298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -97,7 +100,48 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114499886011129250
+--- !u!114 &114597097956550540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1689461795535298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f963fa8ed45fa4cbed6a29a114dec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  relation: {fileID: 114851239157964346}
+  relation_child: {fileID: 0}
+  transformations: {fileID: 114722787863270866}
+--- !u!114 &114722787863270866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1689461795535298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda148f5c4a737408ff7422c72adbdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0}
+  scale: {x: 1, y: 2, z: 1}
+--- !u!114 &114851239157964346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1689461795535298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4733b09e83027409b60d6d7d10609d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  children: []
+  parent: {fileID: 0}
+--- !u!114 &114930634889352690
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -108,4 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1c2c6be6ce7f142a80b9607c76cb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 1689461795535298}
+  instatiateLeaf: {fileID: 114597097956550540}
+  leaf: {fileID: 1689461795535298}
+  leafPath: 

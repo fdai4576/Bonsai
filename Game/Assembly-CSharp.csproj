@@ -53,13 +53,18 @@
   <ItemGroup>
      <Compile Include="Assets\Baum.cs" />
      <Compile Include="Assets\Koch.cs" />
-     <Compile Include="Assets\Relationship.cs" />
-     <Compile Include="Assets\Test.cs" />
- <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>D:/Bonsai/Game/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
- </Reference>
+     <Compile Include="Assets\Scripts\Baum\DestroyOnClick.cs" />
+     <Compile Include="Assets\Scripts\Baum\Init_Leaf.cs" />
+     <Compile Include="Assets\Scripts\Baum\Relationship.cs" />
+     <Compile Include="Assets\Scripts\Baum\Transformations.cs" />
+     <Compile Include="Assets\Scripts\Baum\Update_Tree.cs" />
+     <Compile Include="Assets\Scripts\Speicherung\Laden.cs" />
+     <Compile Include="Assets\Scripts\Speicherung\Speichern.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>D:/Bonsai/Game/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.PackageManagerUI.Editor">
+ <HintPath>D:/Bonsai/Game/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

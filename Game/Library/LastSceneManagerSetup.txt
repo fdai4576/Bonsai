@@ -1,4 +1,4 @@
 sceneSetups:
-- path: "Assets/\xFC6.unity"
+- path: Assets/Scenes/Pflegeszene.unity
   isLoaded: 1
   isActive: 1
