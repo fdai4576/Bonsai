@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class Transformations : MonoBehaviour {
 
-    //Variablen zur Nachvollziehbarkeit (wirken sich nicht auf
-    public Vector3 position; 
-    public Vector3 rotation;
-    public Vector3 scale;
-
-    public void transformate(GameObject child)
+	public void transformate(GameObject newLeaf, int rotation)
     {
-
-        //Transformationen hier
-        //child.transform.Translate(new Vector3(0.0f, 1.0f, 0.0f));
-        scale = new Vector3(1.0f, 2.0f, 1.0f);
-        child.transform.localScale = scale;
-
+		newLeaf.transform.localScale = new Vector3(1, 2, 1);
+		newLeaf.transform.Rotate( 0, rotation, 0 );
+		newLeaf.transform.Translate(0, 1, 0);
+		newLeaf.transform.Rotate( 0, 0, 45 );
+		newLeaf.transform.Translate(0, 1, 0);
     }
 
 }

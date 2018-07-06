@@ -3,40 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Update_Tree : MonoBehaviour {
-    
-    public Init_Leaf instatiateLeaf;
-    public GameObject leaf;
 
-    void Start () {
+	public Init_Leaf instatiateLeaf;
+	public GameObject leaf;
 
-        //Verbindung mit dem Realtionship-Skript
-        instatiateLeaf = this.GetComponent<Init_Leaf>();
+	void Start() {
 
-        //PrefabPath
-        string leafPath = "Assets/Prefabs/Blatt.prefab";
+		//Verbindung mit dem Realtionship-Skript
+		instatiateLeaf = this.GetComponent<Init_Leaf>();
 
-        //Gibt das erste gefundene Asset vom Typ GameObject zurück (benötigt Cast auf GameObject, da Prefab kein GameObject ist)
-        leaf = (GameObject) UnityEditor.AssetDatabase.LoadAssetAtPath(leafPath, typeof(GameObject));
-        
-    }
+		//PrefabPath
+		string leafPath = "Assets/Prefabs/Blatt.prefab";
 
-    void Update () {
+		//Gibt das erste gefundene Asset vom Typ GameObject zurück (benötigt Cast auf GameObject, da Prefab kein GameObject ist)
+		leaf = (GameObject) UnityEditor.AssetDatabase.LoadAssetAtPath(leafPath, typeof(GameObject));
+
+	}
+
+	void Update() {
 
 		if (Input.GetKeyDown(KeyCode.Space)) {
 
-            //Wechsel Name aktuelle Instanz
-            gameObject.transform.name = "Ast ";
+			//Wechsel Name aktuelle Instanz
+			gameObject.transform.name = "Ast ";
+			instatiateLeaf.grow(leaf);
 
-            for(int i = 0; i < 3; i++) {
 
-                //Erzeuge 3 neue Instanzen als Kindobj mit neuem Namen
-                instatiateLeaf.instatiateObject(leaf);
+			//Vernichte Scripts nach einmaligen Einsatz
+			Destroy(this);
 
-            }
-
-            //Vernichte Scripts nach einmaligen Einsatz
-            Destroy(this);
-            
-        }
+		}
 	}
 }
