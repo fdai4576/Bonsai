@@ -11,17 +11,25 @@ public class mouse : MonoBehaviour {
 	void Update () {
 		//Tasten: links 0, rechts 1, mitte 2
 		if (Input.GetMouseButtonDown(0)) {
-			Debug.Log ("left mouse button pressed");
 			//Pos x/y = 0/0 ist links unten
-			Vector3 mousePos = Input.mousePosition;
-			Debug.Log (mousePos.x);
-			Debug.Log (mousePos.y);
+			//Vector3 mousePos = Input.mousePosition;
+			//Debug.Log (mousePos.x);
+			//Debug.Log (mousePos.y);
+
+			//Erzeugt ein Strahl von Mausposition in die Zene hinein
+			Ray ray = Camera.main.ScreenPointToRay( Input.mousePosition );
+			RaycastHit hitInfo;
+			//Trifft der Strahl ein Object auf seinem Weg?
+			if( Physics.Raycast( ray, out hitInfo ) ) {
+				GameObject hitObject = hitInfo.transform.root.gameObject;
+				Debug.Log ("Mouse is over: " + hitObject.name );
+			}
 		}
 		if (Input.GetMouseButtonDown(1)) {
-			Debug.Log ("right mouse button pressed");
+			
 		}
 		if (Input.GetMouseButtonDown(2)) {
-			Debug.Log ("middle mouse button pressed");
+			
 		}
 			
 	}

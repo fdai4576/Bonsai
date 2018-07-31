@@ -8,7 +8,7 @@
       <File FileName="Assets\Scripts\Baum\Transformations.cs" Line="1" Column="1" />
       <File FileName="Assets\Baum.cs" Line="1" Column="1" />
       <File FileName="Assets\Koch.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Baum\mouse.cs" Line="6" Column="2" />
+      <File FileName="Assets\Scripts\Baum\mouse.cs" Line="22" Column="50" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
