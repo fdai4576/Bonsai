@@ -19,10 +19,13 @@ public class mouse : MonoBehaviour {
 			//Erzeugt ein Strahl von Mausposition in die Zene hinein
 			Ray ray = Camera.main.ScreenPointToRay( Input.mousePosition );
 			RaycastHit hitInfo;
+
 			//Trifft der Strahl ein Object auf seinem Weg?
 			if( Physics.Raycast( ray, out hitInfo ) ) {
 				GameObject hitObject = hitInfo.transform.root.gameObject;
-				Debug.Log ("Mouse is over: " + hitObject.name );
+				Debug.Log ("Mouse is over: " + hitObject.name);
+
+                hitObject.AddComponent<Cut_Part>();
 			}
 		}
 		if (Input.GetMouseButtonDown(1)) {

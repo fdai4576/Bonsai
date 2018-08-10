@@ -53,8 +53,9 @@
   <ItemGroup>
      <Compile Include="Assets\Baum.cs" />
      <Compile Include="Assets\Koch.cs" />
-     <Compile Include="Assets\Scripts\Baum\DestroyOnClick.cs" />
+     <Compile Include="Assets\Scripts\Baum\Cut_Part.cs" />
      <Compile Include="Assets\Scripts\Baum\Init_Leaf.cs" />
+     <Compile Include="Assets\Scripts\Baum\mouse.cs" />
      <Compile Include="Assets\Scripts\Baum\Relationship.cs" />
      <Compile Include="Assets\Scripts\Baum\Transformations.cs" />
      <Compile Include="Assets\Scripts\Baum\Update_Tree.cs" />

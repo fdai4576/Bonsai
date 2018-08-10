@@ -12,13 +12,18 @@ public class Relationship : MonoBehaviour {
         children.Add(child);
     }
 
+    //Setzt den Wert für den Index
+    public void setChild(int index, GameObject child) {
+        children[index] = child;
+    }
+
     //Entfernt ein Kind
     public void delChild(GameObject child) {
         children.Remove(child);
     }
 
     //Liefert Kinder
-    public List<GameObject> getChilds(GameObject parent) {
+    public List<GameObject> getChilds() {
         return children;
     }
 
