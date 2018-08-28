@@ -15,5 +15,6 @@ public class MouseSelection : MonoBehaviour {
 	void OnMouseDown()
 	{
 		Debug.Log ("Mouse is over: " + this.name );
+        gameObject.AddComponent<Cut_Part>();
 	}
 }

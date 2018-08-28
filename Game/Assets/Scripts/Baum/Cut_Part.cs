@@ -55,6 +55,12 @@ public class Cut_Part : MonoBehaviour {
 
                     //Füge ein Rigidbody an
                     childs[i].AddComponent<Rigidbody>();
+                    childs[i].GetComponent<Rigidbody>().drag = 10;
+                    Destroy(childs[i].GetComponent<MouseSelection>());
+                    Destroy(childs[i].GetComponent<Init_Leaf>());
+                    Destroy(childs[i].GetComponent<Transformations>());
+                    Destroy(childs[i].GetComponent<Relationship>());
+                    childs[i].transform.name += " (abgeschnitten)";
 
                     //Suche Kinder des Kinds
                     setRigidbodyChilds(childs[i]);
