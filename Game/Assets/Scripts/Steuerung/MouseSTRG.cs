@@ -14,6 +14,7 @@ public class MouseSTRG : MonoBehaviour {
 		Vector3 rot = transform.localRotation.eulerAngles;
 		rotX = rot.x;
 		rotY = rot.y;
+
 	}
 
 	void Update () {
@@ -22,6 +23,7 @@ public class MouseSTRG : MonoBehaviour {
 			Cursor.lockState = CursorLockMode.Locked;
 			mouseX = Input.GetAxis ("Mouse X");
 			mouseY = Input.GetAxis ("Mouse Y");
+
 			rotY += mouseX * inputSensitivity * Time.deltaTime;
 			rotX -= mouseY * inputSensitivity * Time.deltaTime;
 

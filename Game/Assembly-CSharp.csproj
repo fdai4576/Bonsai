@@ -64,6 +64,7 @@
      <Compile Include="Assets\Scripts\Speicherung\Speichern.cs" />
      <Compile Include="Assets\Scripts\Steuerung\MouseSelection.cs" />
      <Compile Include="Assets\Scripts\Steuerung\MouseSTRG.cs" />
+     <Compile Include="Assets\Scripts\Steuerung\Zoom.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>D:/Bonsai/Game/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
