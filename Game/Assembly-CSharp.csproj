@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Baum\Relationship.cs" />
      <Compile Include="Assets\Scripts\Baum\Transformations.cs" />
      <Compile Include="Assets\Scripts\Baum\Update_Tree.cs" />
+     <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Speicherung\Laden.cs" />
      <Compile Include="Assets\Scripts\Speicherung\Speichern.cs" />
      <Compile Include="Assets\Scripts\Steuerung\MouseSelection.cs" />
