@@ -5,7 +5,7 @@ using UnityEngine;
 public class Relationship : MonoBehaviour {
 
     public List<GameObject> children; //Kinder
-    public GameObject parent; //Elternteil
+	public GameObject parent; //Elternteil
 
     //Verknüpft das GameObject mit seinen Kindern
     public void addChild(GameObject child) {
@@ -27,9 +27,14 @@ public class Relationship : MonoBehaviour {
         return children;
     }
 
+	//Liefert Parents
+	public GameObject getParent() {
+		return parent;
+	}
+
     //verknüpft das GameObject mit seinem Elternteil
-    public void setParent(GameObject par) {
-        parent = par;
+    public void setParent(GameObject newParent) {
+        parent = newParent;
     }
 
     //Entfernt das Elternteil

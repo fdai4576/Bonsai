@@ -56,6 +56,7 @@
      <Compile Include="Assets\Baum.cs" />
      <Compile Include="Assets\Koch.cs" />
      <Compile Include="Assets\Scripts\Baum\Cut_Part.cs" />
+     <Compile Include="Assets\Scripts\Baum\Grow.cs" />
      <Compile Include="Assets\Scripts\Baum\Init_Leaf.cs" />
      <Compile Include="Assets\Scripts\Baum\Relationship.cs" />
      <Compile Include="Assets\Scripts\Baum\Transformations.cs" />
