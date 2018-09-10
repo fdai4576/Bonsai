@@ -8,6 +8,7 @@ public class Grow : MonoBehaviour {
 	void Start () {
 		string leafPath = "Assets/Prefabs/Blatt.prefab";
 		leaf = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath (leafPath, typeof(GameObject));
+
 		//Realtionship-Skript das derzeitigen Objekts aufrufen
 		Relationship relation = this.GetComponent<Relationship> ();
 

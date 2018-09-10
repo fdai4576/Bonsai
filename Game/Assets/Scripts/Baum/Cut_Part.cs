@@ -7,18 +7,28 @@ public class Cut_Part : MonoBehaviour {
     // Use this for initialization
     void Start () {
         
-        setRigidbodyChilds(gameObject);
-
         //wenn es nicht der Stamm ist
         if (gameObject.GetComponent<Relationship>().parent != null) {
 
             setParent();
-            Destroy(gameObject);
+            gameObject.AddComponent<Rigidbody>();
+            setRigidbodyChilds(gameObject);
 
         } else {
 
             //hänge das Update-Skript an den Stamm
             gameObject.AddComponent<Update_Tree>();
+
+            //Hole die Liste aller Kinder des ausgewählten Objects
+            Relationship relation = gameObject.GetComponent<Relationship>();
+            List<GameObject> childs = relation.getChilds();
+
+            foreach (GameObject go in childs)
+            {
+                go.AddComponent<Rigidbody>();
+                setRigidbodyChilds(gameObject);
+            }
+
         }
 
     }
@@ -28,11 +38,35 @@ public class Cut_Part : MonoBehaviour {
 
         //hängt das Update_Tree-Skript an das Elternteil
         Relationship relation = gameObject.GetComponent<Relationship>();
-        relation.parent.AddComponent<Update_Tree>();
+        relation.getParent().AddComponent<Update_Tree>();
 
-        //Setzt die Referenz des Kindes auf null
+        //Entfernen des Kindes vom Elternteil
         Relationship RSofParent = relation.parent.GetComponent<Relationship>();
         RSofParent.setChild(RSofParent.getChilds().IndexOf(gameObject), null);
+
+        //Einfügen des Blattes, wenn kein Blatt mehr vorhanden ist
+        if(RSofParent.existingChilds == 0) {
+
+            string leafPath = "Assets/Prefabs/Blatt.prefab";
+            GameObject leaf = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath(leafPath, typeof(GameObject));
+
+            GameObject newLeaf = Instantiate<GameObject>(leaf, relation.parent.transform.position, relation.parent.transform.rotation);
+
+            //Realtionship-Skript des Kind-Objekts aufrufen + setzen des Elternteils
+            Relationship newRelation = newLeaf.GetComponent<Relationship>();
+
+            newRelation = RSofParent;
+
+            //Verbindung mit dem TransformObject-Skript
+            Transformations newTransformations = newLeaf.GetComponent<Transformations>();
+            newTransformations = relation.parent.GetComponent<Transformations>();
+
+            Destroy(relation.parent);
+
+        }
+
+            
+
 
     }
 
@@ -44,7 +78,6 @@ public class Cut_Part : MonoBehaviour {
         List<GameObject> childs = relation.getChilds();
 
         //solange es Kinder gibt
-        Debug.Log(childs.Count != 0);
         if (childs.Count != 0) {
 
             //Füge Rigidbody an das GameObjekt an und rufe Funktion mit Kindern auf
@@ -54,12 +87,22 @@ public class Cut_Part : MonoBehaviour {
                 if (childs[i] != null) {
 
                     //Füge ein Rigidbody an
+                    Rigidbody parent_rb = child.GetComponent<Rigidbody>();
                     childs[i].AddComponent<Rigidbody>();
-                    childs[i].GetComponent<Rigidbody>().drag = 10;
+                    childs[i].GetComponent<Rigidbody>().drag = 3;
+
+                    //Füge ein Joint zum Elternobjekt ein
+                    FixedJoint children_joint = childs[i].AddComponent<FixedJoint>();
+                    children_joint.connectedBody = parent_rb;
+                    children_joint.enableCollision = false;
+
+                    //Entferne unnötige Skripte
                     Destroy(childs[i].GetComponent<MouseSelection>());
                     Destroy(childs[i].GetComponent<Init_Leaf>());
                     Destroy(childs[i].GetComponent<Transformations>());
                     Destroy(childs[i].GetComponent<Relationship>());
+
+                    //Markiere das Objekt als abgeschnitten
                     childs[i].transform.name += " (abgeschnitten)";
 
                     //Suche Kinder des Kinds
@@ -86,7 +129,6 @@ public class Cut_Part : MonoBehaviour {
             Destroy(child.GetComponent<Update_Tree>());
 
         }
-
         
     }
 
