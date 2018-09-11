@@ -27,8 +27,9 @@ public class Growing : MonoBehaviour {
 	void grow() {
 		GameObject newWood = Instantiate<GameObject>(wood, this.transform.position, this.transform.rotation);
 		newWood.transform.name = "Wood";
-		newWood.transform.SetParent(gameObject.transform.parent);
-		for (int rotation = 0; rotation < 360; rotation += 120) {
+        newWood.transform.localScale = gameObject.transform.lossyScale;
+
+        for (int rotation = 0; rotation < 360; rotation += 120) {
 			//Prefab instanzieren
 			GameObject newLeaf = Instantiate<GameObject>(leaf, this.transform.position, this.transform.rotation);
 			newLeaf.transform.name = "Leaf";
@@ -36,13 +37,19 @@ public class Growing : MonoBehaviour {
 			newLeaf.transform.SetParent(newWood.transform);
 		}
 
+        newWood.transform.SetParent(gameObject.transform.parent);
 
-	}
+    }
 
 	void transformLeafs(GameObject newLeaf, int rotation) {
-		newLeaf.transform.Rotate( 0, rotation, 0 );
-		newLeaf.transform.Translate(0, 2, 0);
+        float scale = Random.Range(0.90f, 1.0f);
+        newLeaf.transform.localScale = Vector3.Scale(gameObject.transform.lossyScale, new Vector3(scale, scale, scale));
+
+        newLeaf.transform.Rotate( 0, rotation, 0 );
+		newLeaf.transform.Translate(0, 2*gameObject.transform.lossyScale.x, 0);
 		newLeaf.transform.Rotate( 0, 0, 45 );
-		newLeaf.transform.Translate(0, 2, 0);
-	}
+		newLeaf.transform.Translate(0, 2* gameObject.transform.lossyScale.x, 0);
+
+        
+    }
 }

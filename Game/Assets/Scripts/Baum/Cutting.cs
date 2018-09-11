@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Cutting : MonoBehaviour {
-	public float mass;
+
 	public Rigidbody rb;
 
 	void Start () {
@@ -11,30 +11,49 @@ public class Cutting : MonoBehaviour {
 	}
 
 	public void cutTree() {
-		//wenn es nicht der Stamm ist
-		if (this.transform.parent != null) {
-			gameObject.transform.parent = null;
-			setRb ();
-			removeScripts ();
-		}
+        //wenn es nicht der Stamm ist
+        if (this.transform.parent != null)
+        {
+            addScript();
+            removeScripts(gameObject);
+            setRb(gameObject);
+            gameObject.transform.parent = null;
+        }
+        else {
+            gameObject.AddComponent<Growing>();
+
+            while(gameObject.transform.childCount > 0)
+            {
+                removeScripts(gameObject.transform.GetChild(0).gameObject);
+                setRb(gameObject.transform.GetChild(0).gameObject);
+                gameObject.transform.GetChild(0).parent = null;
+            }
+            
+        }
 	}
 
-	void setRb() {
-		gameObject.AddComponent<Rigidbody>();
-		rb = GetComponent<Rigidbody> ();
+    void addScript() {
+        this.transform.parent.gameObject.AddComponent<Growing>();
+    }
+
+	void setRb(GameObject go) {
+		go.AddComponent<Rigidbody>();
+		rb = go.GetComponent<Rigidbody>();
 		rb.mass = 1;
 		rb.drag = 1;
 	}
 
-	void removeScripts() {
-		Destroy(gameObject.GetComponent<MouseSelection>());
-		Destroy(gameObject.GetComponent<Growing>());
-		Destroy(gameObject.GetComponent<Cutting>());
+	void removeScripts(GameObject go) {
+        Destroy(go.GetComponent<MouseSelection>());
+		Destroy(go.GetComponent<Growing>());
+		Destroy(go.GetComponent<Cutting>());
 
-		foreach (Transform child in transform) {
-			Destroy(child.GetComponent<MouseSelection>());
-			Destroy(child.GetComponent<Growing>());
-			Destroy(child.GetComponent<Cutting>());
-		}
-	}
+        if (go.transform.childCount > 0)
+        {
+            foreach (Transform child in go.transform)
+            {
+                removeScripts(child.gameObject);
+            }
+        }
+    }
 }
