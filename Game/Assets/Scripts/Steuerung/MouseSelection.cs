@@ -5,6 +5,11 @@ using UnityEngine;
 public class MouseSelection : MonoBehaviour {
 	Color original;
 	bool selected;
+	public Cutting cutting;
+
+	void Start() {
+		cutting = this.GetComponent<Cutting>();
+	}
 
 	void OnMouseEnter(){
 		selected = true;
@@ -19,8 +24,9 @@ public class MouseSelection : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		Debug.Log ("Mouse is over: " + this.name );
-        gameObject.AddComponent<Cut_Part>();
+		selected = false;
+		GetComponent<Renderer>().material.color = original;
+		cutting.cutTree();
 	}
 
 	void Update () {

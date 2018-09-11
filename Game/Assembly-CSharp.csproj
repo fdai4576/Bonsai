@@ -55,12 +55,8 @@
   <ItemGroup>
      <Compile Include="Assets\Baum.cs" />
      <Compile Include="Assets\Koch.cs" />
-     <Compile Include="Assets\Scripts\Baum\Cut_Part.cs" />
-     <Compile Include="Assets\Scripts\Baum\Grow.cs" />
-     <Compile Include="Assets\Scripts\Baum\Init_Leaf.cs" />
-     <Compile Include="Assets\Scripts\Baum\Relationship.cs" />
-     <Compile Include="Assets\Scripts\Baum\Transformations.cs" />
-     <Compile Include="Assets\Scripts\Baum\Update_Tree.cs" />
+     <Compile Include="Assets\Scripts\Baum\Cutting.cs" />
+     <Compile Include="Assets\Scripts\Baum\Growing.cs" />
      <Compile Include="Assets\Scripts\Menu\IngameMenu.cs" />
      <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Speicherung\Laden.cs" />
@@ -68,6 +64,12 @@
      <Compile Include="Assets\Scripts\Steuerung\MouseSelection.cs" />
      <Compile Include="Assets\Scripts\Steuerung\MouseSTRG.cs" />
      <Compile Include="Assets\Scripts\Steuerung\Zoom.cs" />
+     <Compile Include="Assets\Scripts\Trash\Cut_Part.cs" />
+     <Compile Include="Assets\Scripts\Trash\Grow.cs" />
+     <Compile Include="Assets\Scripts\Trash\Init_Leaf.cs" />
+     <Compile Include="Assets\Scripts\Trash\Relationship.cs" />
+     <Compile Include="Assets\Scripts\Trash\Transformations.cs" />
+     <Compile Include="Assets\Scripts\Trash\Update_Tree.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>D:/Bonsai/Game/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
