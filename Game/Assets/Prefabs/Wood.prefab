@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4311844928574244}
   - component: {fileID: 33602119501381624}
   - component: {fileID: 23622412541406082}
-  - component: {fileID: 65656301674924774}
   - component: {fileID: 114456764691751642}
   - component: {fileID: 114432870985035540}
+  - component: {fileID: 65659853195402384}
   m_Layer: 0
   m_Name: Wood
   m_TagString: Untagged
@@ -86,7 +86,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1743527214388142}
   m_Mesh: {fileID: 4300000, guid: 2aeb249e7f874014aabef268e6309d48, type: 3}
---- !u!65 &65656301674924774
+--- !u!65 &65659853195402384
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.020000007, y: 0.04, z: 0.02000001}
-  m_Center: {x: -4.656613e-10, y: 0, z: 0.0000000013969839}
+  m_Size: {x: 2.000001, y: 4, z: 2.0000012}
+  m_Center: {x: -0.000000059604645, y: 0, z: 0.00000011920929}
 --- !u!114 &114432870985035540
 MonoBehaviour:
   m_ObjectHideFlags: 1
