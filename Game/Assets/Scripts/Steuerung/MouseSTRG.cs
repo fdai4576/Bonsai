@@ -17,6 +17,7 @@ public class MouseSTRG : MonoBehaviour {
 
 	}
 
+	//Laesst bei gedrücktem Rechtsklick Maus verschwinden und die Kamera um einen Pivot rotieren.
 	void Update () {
 		if (Input.GetMouseButton (1)) {
 			Cursor.visible = false;

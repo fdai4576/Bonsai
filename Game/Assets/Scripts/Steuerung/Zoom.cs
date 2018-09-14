@@ -12,6 +12,7 @@ public class Zoom : MonoBehaviour {
 		zoom = transform.localPosition;
 	}
 
+	//Veraendert den Abstand von Kamera zu Pivot mittels Scrollrad.
 	void Update () {
 		mouseZ = Input.GetAxis ("Mouse ScrollWheel");
 		zoom.z += mouseZ * ScrollSensitivity * Time.deltaTime;

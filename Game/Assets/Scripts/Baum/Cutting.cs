@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Cutting : MonoBehaviour {
-
 	public Rigidbody rb;
 
-	void Start () {
-		
-	}
-
+	//Steuert den Schneidevorgang beim Entfernen eines Asts oder Blattes.
 	public void cutTree() {
         //wenn es nicht der Stamm ist
         if (this.transform.parent != null)
@@ -32,10 +28,12 @@ public class Cutting : MonoBehaviour {
         }
 	}
 
-    void addScript() {
+    //Fuegt Wachstums-Script an ein GameObject an.
+	void addScript() {
         this.transform.parent.gameObject.AddComponent<Growing>();
     }
 
+	//Fuegt Rigidbody an ein GameObject an, welches dann mitsamt seinen Kindern auf Gravitation reagiert
 	void setRb(GameObject go) {
 		go.AddComponent<Rigidbody>();
 		rb = go.GetComponent<Rigidbody>();
@@ -43,16 +41,15 @@ public class Cutting : MonoBehaviour {
 		rb.drag = 1;
 	}
 
+	//Entfernt alle Scripte von einem GameObject.
 	void removeScripts(GameObject go) {
         Destroy(go.GetComponent<MouseSelection>());
 		Destroy(go.GetComponent<Growing>());
 		Destroy(go.GetComponent<Cutting>());
 
-        if (go.transform.childCount > 0)
-        {
-            foreach (Transform child in go.transform)
-            {
-                removeScripts(child.gameObject);
+        if (go.transform.childCount > 0) {
+            foreach (Transform child in go.transform) {
+            	removeScripts(child.gameObject);
             }
         }
     }
