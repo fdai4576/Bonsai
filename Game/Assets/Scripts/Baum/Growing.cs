@@ -6,7 +6,7 @@ public class Growing : MonoBehaviour {
 	public GameObject leaf;
 	public GameObject wood;
 	public GameObject newParent;
-	Vector3 childs = new Vector3 (0, 0, 0);
+    public Vector3 childs;
 
 	void Start () {
 		//PrefabPath
@@ -33,8 +33,8 @@ public class Growing : MonoBehaviour {
 				//Prefab instanzieren
 				GameObject newLeaf = Instantiate<GameObject>(leaf, this.transform.position, this.transform.rotation);
 				newLeaf.transform.name = "Leaf" + i;
-				transformLeafs (newLeaf, i*120);
-				newLeaf.transform.SetParent(newParent.transform);
+				transformLeafs(newLeaf, i*120);
+				newLeaf.transform.SetParent(gameObject.transform);
 			}
 		}
 		Destroy(this.GetComponent<Growing>());
@@ -43,25 +43,15 @@ public class Growing : MonoBehaviour {
 	//Vermerkt eventuell vorhandene Kindobjekte(Blaetter an einem Ast) in einem Vektor.
 	Vector3 checkChilds() {
 		if (this.transform.childCount > 0) {
-			newParent = gameObject;
 			foreach (Transform child in this.transform) {
-				switch (child.gameObject.name) {
-				case "Leaf0":
+				switch (child.gameObject.name.Substring(4)) {
+				case "0":
 					childs += new Vector3 (1, 0, 0);
 					break;
-				case "Wood0":
-					childs += new Vector3 (1, 0, 0);
-					break;
-				case "Leaf1":
+				case "1":
 					childs += new Vector3 (0, 1, 0);
 					break;
-				case "Wood1":
-					childs += new Vector3 (0, 1, 0);
-					break;
-				case "Leaf2":
-					childs += new Vector3 (0, 0, 1);
-					break;
-				case "Wood2":
+				case "2":
 					childs += new Vector3 (0, 0, 1);
 					break;
 				default:
@@ -76,23 +66,12 @@ public class Growing : MonoBehaviour {
 
 	//Tauscht Blatt- mit Ast-Element
 	void Leaf2Wood() {
-		newParent = Instantiate<GameObject>(wood, this.transform.position, this.transform.rotation);
-		switch (this.name) {
-		case "Leaf0":
-			newParent.transform.name = "Wood0";
-			break;
-		case "Leaf1":
-			newParent.transform.name = "Wood1";
-			break;
-		case "Leaf2":
-			newParent.transform.name = "Wood2";
-			break;
-		default:
-			break;
-		}
-		newParent.transform.localScale = gameObject.transform.lossyScale;
-		newParent.transform.SetParent(gameObject.transform.parent);
-		Destroy(gameObject);
+        Mesh wood_mesh = wood.GetComponent<MeshFilter>().sharedMesh;
+        Material wood_material = wood.GetComponent<MeshRenderer>().sharedMaterial;
+
+        gameObject.GetComponent<MeshFilter>().mesh = Instantiate(wood_mesh);
+        gameObject.GetComponent<MeshRenderer>().material.CopyPropertiesFromMaterial(wood_material);
+        gameObject.name = "Wood" + gameObject.name.Substring(4);
 	}
 
 	//Bringt neue Blaetter in Position

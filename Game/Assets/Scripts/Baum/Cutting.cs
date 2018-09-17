@@ -30,6 +30,7 @@ public class Cutting : MonoBehaviour {
 
     //Fuegt Wachstums-Script an ein GameObject an.
 	void addScript() {
+        if (this.transform.parent.gameObject.AddComponent<Growing>() == null)
         this.transform.parent.gameObject.AddComponent<Growing>();
     }
 
