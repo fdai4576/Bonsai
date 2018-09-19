@@ -57,6 +57,7 @@
      <Compile Include="Assets\Koch.cs" />
      <Compile Include="Assets\Scripts\Baum\Cutting.cs" />
      <Compile Include="Assets\Scripts\Baum\Growing.cs" />
+     <Compile Include="Assets\Scripts\Menu\Ansicht.cs" />
      <Compile Include="Assets\Scripts\Menu\IngameMenu.cs" />
      <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Speicherung\Game.cs" />
