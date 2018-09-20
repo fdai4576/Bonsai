@@ -32,7 +32,7 @@ public class SaveGames : MonoBehaviour {
         setGame();
         Speichern.Save();
         Laden.loaded = false;
-
+        save_panel.SetActive(false);
     }
 
     public void setGame()

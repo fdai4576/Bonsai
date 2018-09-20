@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class SaveGameToScene : MonoBehaviour {
 
-	//Initialisiert einen Speicherstand, wenn er geladen werden soll
-	void Start () {
-        Debug.Log(Laden.gameToLoad);
+    //Initialisiert einen Speicherstand, wenn er geladen werden soll
+    void Start () {
 		if(Laden.gameToLoad != (int?) null)
         {
-            rebuild_tree((int) Laden.gameToLoad);
+            Game.current = Laden.saveGames[(int) Laden.gameToLoad];
+            rebuild_tree();
         }
         Destroy(this);
 	}
 
     //Stellt den Baum wieder her
-    public void rebuild_tree(int index)
+    public void rebuild_tree()
     {
 
         //PrefabPath
@@ -33,35 +33,34 @@ public class SaveGameToScene : MonoBehaviour {
         //Liste für alle bereits erzeugten GameObjects
         List<GameObject> gameObjects = new List<GameObject>();
 
-        //Referenz zum aktuellen GameObject
+        //Referenz auf ein neues GameObject
         GameObject go = new GameObject();
 
         //Erzeugt die Baumteile
-        for (int i = 0; i < Laden.saveGames[index].tree.Count; i++)
+        for (int i = 0; i < Game.current.tree.Count; i++)
         {
 
-            if (Laden.saveGames[index].tree[i].Contains("wood"))
+            if (Game.current.tree[i].Contains("Wood"))
             {
-                go = GameObject.Instantiate<GameObject>(wood, go.transform.position, go.transform.rotation);
+               go = GameObject.Instantiate<GameObject>(wood, go.transform.position, go.transform.rotation);
             }
             else
             {
-                go = GameObject.Instantiate<GameObject>(leaf, go.transform.position, go.transform.rotation);
+               go = GameObject.Instantiate<GameObject>(leaf, go.transform.position, go.transform.rotation);
             }
-
-            go.transform.position.Set(Laden.saveGames[index].tree_positions[i].x, Laden.saveGames[index].tree_positions[i].y, Laden.saveGames[index].tree_positions[i].z);
-            go.transform.rotation.Set(Laden.saveGames[index].tree_rotations[i].x, Laden.saveGames[index].tree_rotations[i].y, Laden.saveGames[index].tree_rotations[i].z, Laden.saveGames[index].tree_rotations[i].w);
-            go.transform.localScale.Set(Laden.saveGames[index].tree_scales[i].x, Laden.saveGames[index].tree_scales[i].y, Laden.saveGames[index].tree_scales[i].z);
-            if (Laden.saveGames[index].tree_parent_ids[i] != null)
+            go.transform.position = new Vector3(Game.current.tree_positions[i].x, Game.current.tree_positions[i].y, Game.current.tree_positions[i].z);
+            go.transform.rotation = new Quaternion(Game.current.tree_rotations[i].x, Game.current.tree_rotations[i].y, Game.current.tree_rotations[i].z, Game.current.tree_rotations[i].w);
+            go.transform.localScale = new Vector3(Game.current.tree_scales[i].x, Game.current.tree_scales[i].y, Game.current.tree_scales[i].z);
+            if (Game.current.tree_parent_ids[i] != null)
             {
-                go.transform.parent = gameObjects[Laden.saveGames[index].tree_ids.IndexOf((int) Laden.saveGames[index].tree_parent_ids[i])].transform;
+                go.transform.parent = gameObjects[Game.current.tree_ids.IndexOf((int) Game.current.tree_parent_ids[i])].transform;
             }
 
-            if (Laden.saveGames[index].grow_attached[i])
+            if (Game.current.grow_attached[i])
             {
                 go.AddComponent<Growing>();
             }
-            go.tag = "Tree";
+            go.name = Game.current.tree[i];
             gameObjects.Add(go);
         }
 

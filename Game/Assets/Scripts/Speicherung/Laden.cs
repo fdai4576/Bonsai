@@ -14,7 +14,6 @@ public static class Laden {
     public static void Load() {
         if (File.Exists(Application.dataPath + "/savedGames.gd"))
         {
-            Debug.Log(Application.persistentDataPath);
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.dataPath + "/savedGames.gd", FileMode.Open);
             saveGames = (List<Game>)bf.Deserialize(file);

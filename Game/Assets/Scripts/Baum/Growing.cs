@@ -3,20 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Growing : MonoBehaviour {
-	public GameObject leaf;
-	public GameObject wood;
-	public GameObject newParent;
-    public Vector3 childs;
+	private GameObject leaf;
+	private GameObject wood;
+    private Material material;
+    private Vector3 childs;
 
 	void Start () {
 		//PrefabPath
 		string leafPath = "Assets/Prefabs/Leaf.prefab";
 		string woodPath = "Assets/Prefabs/Wood.prefab";
+        string materialPath = "Assets/Materials/Wood.mat";
 
 		//Gibt das erste gefundene Asset vom Typ GameObject zurück (benötigt Cast auf GameObject, da Prefab kein GameObject ist)
 		leaf = (GameObject) UnityEditor.AssetDatabase.LoadAssetAtPath(leafPath, typeof(GameObject));
 		wood = (GameObject) UnityEditor.AssetDatabase.LoadAssetAtPath(woodPath, typeof(GameObject));
-	}
+        material = (Material) UnityEditor.AssetDatabase.LoadAssetAtPath(materialPath, typeof(Material));
+    }
 
 	//Fragt Leertasten-Input ab, um dann Wachstum zu initieren.
 	void Update () {
@@ -77,8 +79,8 @@ public class Growing : MonoBehaviour {
 		Mesh wood_mesh = wood.GetComponent<MeshFilter>().sharedMesh;
         Material wood_material = wood.GetComponent<MeshRenderer>().sharedMaterial;
 
-        gameObject.GetComponent<MeshFilter>().mesh = Instantiate(wood_mesh);
-        gameObject.GetComponent<MeshRenderer>().material.CopyPropertiesFromMaterial(wood_material);
+        gameObject.GetComponent<MeshFilter>().mesh = wood_mesh;
+        gameObject.GetComponent<MeshRenderer>().material = material;
         gameObject.name = "Wood" + gameObject.name.Substring(4);
 	}
 
