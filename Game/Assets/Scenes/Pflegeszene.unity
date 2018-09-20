@@ -2331,7 +2331,7 @@ MonoBehaviour:
   - {fileID: 1590839889}
   - {fileID: 2102635897}
   - {fileID: 1437671054}
-  savegame_panel: {fileID: 0}
+  savegame_panel: {fileID: 1562815821}
 --- !u!224 &1338792725
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2373,8 +2373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game_name: {fileID: 1152984066}
-  savegame_panel: {fileID: 0}
-  save_panel: {fileID: 0}
+  savegame_panel: {fileID: 1562815821}
+  save_panel: {fileID: 1211540844}
 --- !u!1 &1437671054
 GameObject:
   m_ObjectHideFlags: 0
@@ -2482,7 +2482,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -966.1769}
+  m_AnchoredPosition: {x: 960, y: -1023.76306}
   m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1449307380
