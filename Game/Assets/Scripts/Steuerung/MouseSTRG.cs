@@ -19,20 +19,22 @@ public class MouseSTRG : MonoBehaviour {
 
 	//Laesst bei gedrücktem Rechtsklick Maus verschwinden und die Kamera um einen Pivot rotieren.
 	void Update () {
-		if (Input.GetMouseButton (1)) {
-			Cursor.visible = false;
-			Cursor.lockState = CursorLockMode.Locked;
-			mouseX = Input.GetAxis ("Mouse X");
-			mouseY = Input.GetAxis ("Mouse Y");
+		if (!IngameMenu.menuOpened) {
+			if (Input.GetMouseButton (1)) {
+				Cursor.visible = false;
+				Cursor.lockState = CursorLockMode.Locked;
+				mouseX = Input.GetAxis ("Mouse X");
+				mouseY = Input.GetAxis ("Mouse Y");
 
-			rotY += mouseX * inputSensitivity * Time.deltaTime;
-			rotX -= mouseY * inputSensitivity * Time.deltaTime;
+				rotY += mouseX * inputSensitivity * Time.deltaTime;
+				rotX -= mouseY * inputSensitivity * Time.deltaTime;
 
-			Quaternion localRotation = Quaternion.Euler (rotX, rotY, 0.0f);
-			transform.rotation = localRotation;
-		} else {
-			Cursor.visible = true;
-			Cursor.lockState = CursorLockMode.None;
+				Quaternion localRotation = Quaternion.Euler (rotX, rotY, 0.0f);
+				transform.rotation = localRotation;
+			} else {
+				Cursor.visible = true;
+				Cursor.lockState = CursorLockMode.None;
+			}
 		}
 	}
 }

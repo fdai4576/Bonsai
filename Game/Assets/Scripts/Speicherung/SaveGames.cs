@@ -33,6 +33,7 @@ public class SaveGames : MonoBehaviour {
         Speichern.Save();
         Laden.loaded = false;
         save_panel.SetActive(false);
+		IngameMenu.menuOpened = false;
     }
 
     public void setGame()

@@ -2397,6 +2397,9 @@ MonoBehaviour:
   - {fileID: 2102635897}
   - {fileID: 1437671054}
   savegame_panel: {fileID: 1562815821}
+  leaf: {fileID: 0}
+  wood: {fileID: 0}
+  obj: {fileID: 0}
 --- !u!224 &1338792725
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2762,25 +2765,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1590839889}
   m_CullTransparentMesh: 0
---- !u!1 &1594698312 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1128789193524658, guid: 2935878c2a7638e4f88ad747c3e5ffa5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1645103526}
---- !u!114 &1594698320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1594698312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 465330019f4e9514fb19eb93f68f6073, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leaf: {fileID: 0}
-  wood: {fileID: 0}
-  obj: {fileID: 0}
 --- !u!1001 &1638936842
 Prefab:
   m_ObjectHideFlags: 0
@@ -3494,7 +3478,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2065674805}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1338792724}
+        m_MethodName: ChangeView
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2065674805

@@ -90,6 +90,6 @@ public class Growing : MonoBehaviour {
 		newLeaf.transform.Translate(0, 2*gameObject.transform.lossyScale.y, 0);
 		newLeaf.transform.Rotate( 0, 0, 45 );
 		newLeaf.transform.Translate(0, 2, 0);
-		newLeaf.transform.Rotate( 0, Random.Range(0, 180), 0 );
+		newLeaf.transform.Rotate( 0, UnityEngine.Random.Range(0, 180), 0 );
     }
 }
