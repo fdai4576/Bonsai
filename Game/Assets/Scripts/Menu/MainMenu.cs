@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour {
 
     public bool loaded = false;
+    public List<GameObject> saves;
 
     public void PlayGame() {
-		SceneManager.LoadScene(1);
+        Laden.gameToLoad = null;
+        SceneManager.LoadScene(1);
 	}
 
     public void showSavegames() {

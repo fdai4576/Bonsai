@@ -47,6 +47,7 @@ public class Cutting : MonoBehaviour {
         Destroy(go.GetComponent<MouseSelection>());
 		Destroy(go.GetComponent<Growing>());
 		Destroy(go.GetComponent<Cutting>());
+        go.AddComponent<FixColorIssue>();
 
         if (go.transform.childCount > 0) {
             foreach (Transform child in go.transform) {
