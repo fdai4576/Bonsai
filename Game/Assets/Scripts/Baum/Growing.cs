@@ -66,7 +66,15 @@ public class Growing : MonoBehaviour {
 
 	//Tauscht Blatt- mit Ast-Element
 	void Leaf2Wood() {
-        Mesh wood_mesh = wood.GetComponent<MeshFilter>().sharedMesh;
+		gameObject.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+		if (gameObject.transform.parent != null) {
+			gameObject.transform.Translate (0, -2, 0);
+			gameObject.transform.Translate (0, 1.4f * gameObject.transform.parent.transform.lossyScale.x, 0);
+		} else {
+			gameObject.transform.Translate(0, -0.3f, 0);
+		}
+
+		Mesh wood_mesh = wood.GetComponent<MeshFilter>().sharedMesh;
         Material wood_material = wood.GetComponent<MeshRenderer>().sharedMaterial;
 
         gameObject.GetComponent<MeshFilter>().mesh = Instantiate(wood_mesh);
@@ -76,12 +84,10 @@ public class Growing : MonoBehaviour {
 
 	//Bringt neue Blaetter in Position
 	void transformLeafs(GameObject newLeaf, int rotation) {
-        float scale = Random.Range(0.90f, 1.0f);
-        newLeaf.transform.localScale = Vector3.Scale(gameObject.transform.lossyScale, new Vector3(scale, scale, scale));
-
-        newLeaf.transform.Rotate( 0, rotation, 0 );
-		newLeaf.transform.Translate(0, 2*gameObject.transform.lossyScale.x, 0);
+		newLeaf.transform.Rotate( 0, rotation, 0 );
+		newLeaf.transform.Translate(0, 2*gameObject.transform.lossyScale.y, 0);
 		newLeaf.transform.Rotate( 0, 0, 45 );
-		newLeaf.transform.Translate(0, 2* gameObject.transform.lossyScale.x, 0);
+		newLeaf.transform.Translate(0, 2, 0);
+		newLeaf.transform.Rotate( 0, Random.Range(0, 180), 0 );
     }
 }

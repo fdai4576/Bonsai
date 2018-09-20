@@ -6,6 +6,8 @@ public class Ansicht : MonoBehaviour {
 	public GameObject leaf;
 	public GameObject wood;
 	public GameObject obj;
+	Mesh new_mesh;
+	Material new_material;
 	// Use this for initialization
 	void Start () {
 		//PrefabPath
@@ -18,15 +20,23 @@ public class Ansicht : MonoBehaviour {
 	}
 	
 	void ChangeView() {
-		GameObject[] tree_parts = GameObject.FindGameObjectsWithTag("Tree");
+		//GameObject[] tree_parts = GameObject.FindGameObjectsWithTag("Tree");
 		foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Tree")) {
-
+			if (obj.name.Contains ("Leaf")) {
+				new_mesh = leaf.GetComponent<MeshFilter> ().sharedMesh;
+				new_material = leaf.GetComponent<MeshRenderer> ().sharedMaterial;
+			} else {
+				new_mesh = wood.GetComponent<MeshFilter> ().sharedMesh;
+				new_material = wood.GetComponent<MeshRenderer> ().sharedMaterial;
+			}
+			obj.GetComponent<MeshFilter> ().mesh = Instantiate (new_mesh);
+			obj.GetComponent<MeshRenderer> ().material.CopyPropertiesFromMaterial (new_material);
 		}
+	}
 
-		Mesh wood_mesh = wood.GetComponent<MeshFilter>().sharedMesh;
-		Material wood_material = wood.GetComponent<MeshRenderer>().sharedMaterial;
-
-		gameObject.GetComponent<MeshFilter>().mesh = Instantiate(wood_mesh);
-		gameObject.GetComponent<MeshRenderer>().material.CopyPropertiesFromMaterial(wood_material);
+	void Update () {
+		if (Input.GetKeyDown (KeyCode.A)) {
+			ChangeView();
+		}
 	}
 }
