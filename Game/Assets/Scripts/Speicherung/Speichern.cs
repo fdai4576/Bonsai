@@ -15,8 +15,8 @@ public static class Speichern {
         if (!Laden.loaded)
         {
             Laden.Load();
-            saveGames = Laden.saveGames;
         }
+        saveGames = Laden.saveGames;
         if (saveGames.Count <= gameToSave)
         {
             saveGames.Add(Game.current);

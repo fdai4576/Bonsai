@@ -14,5 +14,9 @@ public class FadeOut : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         color.a -= Time.deltaTime * 0.1f;
+        gameObject.GetComponent<MeshRenderer>().material.color = color;
+        if (color.a < 0.00f) {
+            Destroy(this);
+        }
 	}
 }

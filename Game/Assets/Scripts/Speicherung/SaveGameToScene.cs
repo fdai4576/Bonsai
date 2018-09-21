@@ -18,9 +18,18 @@ public class SaveGameToScene : MonoBehaviour {
     public void rebuild_tree()
     {
 
-        //PrefabPath
-        string leafPath = "Assets/Prefabs/Leaf.prefab";
-        string woodPath = "Assets/Prefabs/Wood.prefab";
+        string leafPath = "";
+        string woodPath = "";
+
+        if(Game.current.quality)
+        {
+            leafPath = "Assets/Prefabs/LeafTexture.prefab";
+            woodPath = "Assets/Prefabs/WoodTexture.prefab";
+            IngameMenu.textureOn = true;
+        } else { 
+            leafPath = "Assets/Prefabs/Leaf.prefab";
+            woodPath = "Assets/Prefabs/Wood.prefab";
+        }
 
         //Gibt das erste gefundene Asset vom Typ GameObject zurück (benötigt Cast auf GameObject, da Prefab kein GameObject ist)
         GameObject leaf = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath(leafPath, typeof(GameObject));

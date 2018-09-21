@@ -34,6 +34,7 @@ public class SaveGames : MonoBehaviour {
 
     public void saveGame()
     {
+        IngameMenu.menuOpened = false;
         Game.current = new Game();
         Game.current.name = game_name.GetComponent<Text>().text;
         setGame();
@@ -49,6 +50,7 @@ public class SaveGames : MonoBehaviour {
         foreach (GameObject go in tree_parts)
         {
             Game.current.tree.Add(go.name);
+            Game.current.quality = IngameMenu.textureOn;
             Game.current.tree_positions.Add(new SerializableVector3(go.transform.position.x, go.transform.position.y, go.transform.position.z));
             Game.current.tree_rotations.Add(new SerializableQuaternion(go.transform.rotation.x, go.transform.rotation.y, go.transform.rotation.z, go.transform.rotation.w));
             Game.current.tree_scales.Add(new SerializableVector3(go.transform.lossyScale.x, go.transform.lossyScale.y, go.transform.lossyScale.z));

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class IngameMenu : MonoBehaviour {
 
 	public static bool menuOpened;
-	public static bool textureOn;
+	public static bool textureOn = false;
     public List<GameObject> savegame_text;
     public GameObject savegame_panel;
 

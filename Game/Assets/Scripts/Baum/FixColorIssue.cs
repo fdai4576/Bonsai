@@ -11,8 +11,18 @@ public class FixColorIssue : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        string wood_materialPath = "Assets/Materials/Wood.mat";
-        string leaf_materialPath = "Assets/Materials/Leaf.mat";
+        string wood_materialPath = "";
+        string leaf_materialPath = "";
+
+        if (IngameMenu.textureOn) {
+
+            wood_materialPath = "Assets/Materials/WoodTexture.mat";
+            leaf_materialPath = "Assets/Materials/LeafTexture.mat";
+
+        } else { 
+            wood_materialPath = "Assets/Materials/Wood.mat";
+            leaf_materialPath = "Assets/Materials/Leaf.mat";
+        }
 
         leaf_material = (Material)UnityEditor.AssetDatabase.LoadAssetAtPath(leaf_materialPath, typeof(Material));
         wood_material = (Material)UnityEditor.AssetDatabase.LoadAssetAtPath(wood_materialPath, typeof(Material));
