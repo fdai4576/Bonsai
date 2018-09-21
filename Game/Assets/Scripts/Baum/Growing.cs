@@ -79,11 +79,11 @@ public class Growing : MonoBehaviour {
 	//Tauscht Blatt- mit Ast-Element
 	void Leaf2Wood() {
 		newParent = gameObject.transform.parent;
+		gameObject.transform.Translate (0, -2*gameObject.transform.lossyScale.y, 0);
 		gameObject.transform.SetParent(null);
-		gameObject.transform.Translate (0, -3.4f, 0);
 		gameObject.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+		gameObject.transform.Translate (0, 2*gameObject.transform.lossyScale.y, 0);
 		gameObject.transform.SetParent(newParent);
-
 
 		Mesh wood_mesh = wood.GetComponent<MeshFilter>().sharedMesh;
         Material wood_material = wood.GetComponent<MeshRenderer>().sharedMaterial;

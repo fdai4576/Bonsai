@@ -5,19 +5,18 @@ using UnityEngine;
 public class FadeOut : MonoBehaviour {
 	float timer = 0.0f;
     Color color;
-	private Material leaf;
-	string leafPath;
+	private Material m;
 
 	// Use this for initialization
 	void Start () {
-		//MeshRenderer renderer = gameObject.GetComponent <MeshRenderer>();
-		//Material material = renderer.material;
-		//material.SetFloat("_Mode", 3f);
-		gameObject.GetComponent<MeshRenderer>().material.SetFloat("_Mode", 2);
-		//leafPath = "Assets/Materials/LeafFade.mat";
-		//leaf = (Material) UnityEditor.AssetDatabase.LoadAssetAtPath(leafPath, typeof(Material));
-
-		//gameObject.GetComponent<MeshRenderer>().material = leaf;
+		m = gameObject.GetComponent<MeshRenderer>().material;
+		m.SetFloat("_Mode", 2);
+		m.SetInt ("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+		m.SetInt ("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+		m.DisableKeyword ("_ALPHATEST_ON");
+		m.EnableKeyword ("_ALPHABLEND_ON");
+		m.DisableKeyword ("_ALPHAPREMULTIPLY_ON");
+		m.renderQueue = 3000;
 		color = gameObject.GetComponent<MeshRenderer>().material.color;
 	}
 	
@@ -25,7 +24,7 @@ public class FadeOut : MonoBehaviour {
 	void Update () {
 		timer += Time.deltaTime;
 		if (timer > 5) {
-			color.a -= 0.1f*Time.deltaTime;
+			color.a -= Time.deltaTime;
 			gameObject.GetComponent<MeshRenderer>().material.color = color;
 			if (color.a <= 0) {
 				Destroy (gameObject);
