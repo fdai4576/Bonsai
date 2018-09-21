@@ -49,6 +49,7 @@ public class Cutting : MonoBehaviour {
 		Destroy(go.GetComponent<Cutting>());
         go.AddComponent<FixColorIssue>();
         go.tag = "Cut";
+		go.AddComponent<FadeOut>();
 
         if (go.transform.childCount > 0) {
             foreach (Transform child in go.transform) {

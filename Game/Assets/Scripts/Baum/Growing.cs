@@ -6,7 +6,7 @@ public class Growing : MonoBehaviour {
 	private GameObject leaf;
 	private GameObject wood;
 	private Transform newParent;
-    private Material material;
+    //private Material material;
     private Vector3 childs;
 	string leafPath;
 	string woodPath;
