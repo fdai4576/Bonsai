@@ -1,23 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
+    
+    public GameObject main_panel;
+    public GameObject savegame_panel;
+    public List<GameObject> savegame_text;
 
-    public bool loaded = false;
-    public List<GameObject> saves;
-
+    //Startet ein neues Spiel
     public void PlayGame() {
         Laden.gameToLoad = null;
         SceneManager.LoadScene(1);
 	}
 
+    //Zeigt/Lädt die Spielstände und versteckt das Hauptmenü 
     public void showSavegames() {
-        if(!loaded) { 
+        if(Laden.loaded) { 
             Laden.Load();
-            loaded = true;
+            Laden.loaded = true;
         }
+
+        int i = 0;
+
+        foreach (Game save in Laden.saveGames)
+        {
+            savegame_text[i].GetComponent<Text>().text = save.name;
+            i++;
+        }
+
+        while (i < 3)
+        {
+            savegame_text[i].GetComponent<Text>().text = "Freier Spielstand";
+            i++;
+        }
+
         GameObject saveGames = GameObject.FindGameObjectWithTag("Menu");
         GameObject start_panel = saveGames.transform.GetChild(0).gameObject;
         GameObject panel = saveGames.transform.GetChild(1).gameObject;
@@ -27,6 +46,7 @@ public class MainMenu : MonoBehaviour {
         
     }
 
+    //Zeigt das Hauptmenü und versteckt die Spielstände
     public void hideSavegames()
     {
         GameObject saveGames = GameObject.FindGameObjectWithTag("Menu");

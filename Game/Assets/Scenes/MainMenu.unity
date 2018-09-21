@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 7587038}
   - component: {fileID: 7587037}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Savgame_Panel
   m_TagString: SaveGames
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -786,8 +786,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9db4e0e037d3c846a4e77480b2937b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loaded: 0
-  saves: []
+  main_panel: {fileID: 1909293987}
+  savegame_panel: {fileID: 7587035}
+  savegame_text:
+  - {fileID: 1410824913}
+  - {fileID: 1731504434}
+  - {fileID: 78966690}
 --- !u!4 &509990386
 Transform:
   m_ObjectHideFlags: 0
@@ -1670,7 +1674,7 @@ GameObject:
   - component: {fileID: 1909293990}
   - component: {fileID: 1909293989}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Main_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

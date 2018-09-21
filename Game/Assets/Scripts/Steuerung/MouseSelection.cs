@@ -6,7 +6,6 @@ public class MouseSelection : MonoBehaviour {
 	Color original;
 	bool selected;
 	public Cutting cutting;
-	static bool menuOpened;
 
 	void Start() {
 		cutting = this.GetComponent<Cutting>();

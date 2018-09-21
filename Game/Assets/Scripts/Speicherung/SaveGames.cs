@@ -10,6 +10,7 @@ public class SaveGames : MonoBehaviour {
     public GameObject savegame_panel;
     public GameObject save_panel;
 
+    //Lädt das SaveGame
     public void loadSavegames(int i)
     {
         if (i < Laden.saveGames.Count)
@@ -17,6 +18,12 @@ public class SaveGames : MonoBehaviour {
             Laden.gameToLoad = i;
             SceneManager.LoadScene(1);
         }
+    }
+
+    public void backToSavegames() {
+
+        savegame_panel.SetActive(true);
+        save_panel.SetActive(false);
     }
 
     public void setSaveSlot(int index) {
@@ -33,7 +40,6 @@ public class SaveGames : MonoBehaviour {
         Speichern.Save();
         Laden.loaded = false;
         save_panel.SetActive(false);
-		IngameMenu.menuOpened = false;
     }
 
     public void setGame()

@@ -27,6 +27,7 @@ public class IngameMenu : MonoBehaviour {
         Debug.Log("ESC-Button pressed");
     }
 
+    //Zeigt die Spielstände und lädt sie (falls notwendig)
     public void showSavegame() {
 		menuOpened = true;
 		Debug.Log(savegame_panel);
@@ -49,12 +50,14 @@ public class IngameMenu : MonoBehaviour {
         savegame_panel.gameObject.SetActive(true);
     }
 
+    //Versteckt die Spielstände
     public void hideSavegames() {
 		menuOpened = false;
 		savegame_panel.gameObject.SetActive(false);
     }
 
-	public void ChangeView() {
+
+    public void ChangeView() {
 		if (!textureOn) {
 			//PrefabPath
 			leafPath = "Assets/Prefabs/LeafTexture.prefab";
@@ -76,8 +79,8 @@ public class IngameMenu : MonoBehaviour {
 				new_mesh = wood.GetComponent<MeshFilter> ().sharedMesh;
 				new_material = wood.GetComponent<MeshRenderer> ().sharedMaterial;
 			}
-			obj.GetComponent<MeshFilter> ().mesh = Instantiate (new_mesh);
-			obj.GetComponent<MeshRenderer> ().material.CopyPropertiesFromMaterial (new_material);
+			obj.GetComponent<MeshFilter> ().mesh = new_mesh;
+			obj.GetComponent<MeshRenderer> ().material.CopyPropertiesFromMaterial(new_material);
 		}
 	}
 
