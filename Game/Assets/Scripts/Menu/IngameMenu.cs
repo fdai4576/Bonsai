@@ -19,9 +19,6 @@ public class IngameMenu : MonoBehaviour {
 	string leafPath;
 	string woodPath;
 
-	void Start () {
-	}
-
     public void escButton() {
         SceneManager.LoadSceneAsync(0);
         Debug.Log("ESC-Button pressed");
@@ -62,9 +59,11 @@ public class IngameMenu : MonoBehaviour {
 			//PrefabPath
 			leafPath = "Assets/Prefabs/LeafTexture.prefab";
 			woodPath = "Assets/Prefabs/WoodTexture.prefab";
+			textureOn = true;
 		} else {
 			leafPath = "Assets/Prefabs/Leaf.prefab";
 			woodPath = "Assets/Prefabs/Wood.prefab";
+			textureOn = false;
 		}
 
 		//Gibt das erste gefundene Asset vom Typ GameObject zurück (benötigt Cast auf GameObject, da Prefab kein GameObject ist)

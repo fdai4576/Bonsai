@@ -7,18 +7,21 @@ public class Growing : MonoBehaviour {
 	private GameObject wood;
     private Material material;
     private Vector3 childs;
+	string leafPath;
+	string woodPath;
 
-	void Start () {
-		//PrefabPath
-		string leafPath = "Assets/Prefabs/Leaf.prefab";
-		string woodPath = "Assets/Prefabs/Wood.prefab";
-        string materialPath = "Assets/Materials/Wood.mat";
-
+	void setPrefabs() {
+		if (IngameMenu.textureOn) {
+			leafPath = "Assets/Prefabs/LeafTexture.prefab";
+			woodPath = "Assets/Prefabs/WoodTexture.prefab";
+		} else {
+			leafPath = "Assets/Prefabs/Leaf.prefab";
+			woodPath = "Assets/Prefabs/Wood.prefab";
+		}
 		//Gibt das erste gefundene Asset vom Typ GameObject zurück (benötigt Cast auf GameObject, da Prefab kein GameObject ist)
 		leaf = (GameObject) UnityEditor.AssetDatabase.LoadAssetAtPath(leafPath, typeof(GameObject));
 		wood = (GameObject) UnityEditor.AssetDatabase.LoadAssetAtPath(woodPath, typeof(GameObject));
-        material = (Material) UnityEditor.AssetDatabase.LoadAssetAtPath(materialPath, typeof(Material));
-    }
+	}
 
 	//Fragt Leertasten-Input ab, um dann Wachstum zu initieren.
 	void Update () {
@@ -29,8 +32,14 @@ public class Growing : MonoBehaviour {
 
 	//Steuert den Wachstumsprozess eines Blatt- oder Ast-Elements.
 	void grow() {
-		childs = checkChilds();
-        for (int i = 0; i < 3; i++) {
+		setPrefabs ();
+		childs = countChilds();
+		checkChilds();
+    }
+
+	//Prueft ob ein Kindobjekt fehlt und laesst dieses dann nachwachsen
+	void checkChilds() {
+		for (int i = 0; i < 3; i++) {
 			if(childs[i] == 0) {
 				//Prefab instanzieren
 				GameObject newLeaf = Instantiate<GameObject>(leaf, this.transform.position, this.transform.rotation);
@@ -40,13 +49,15 @@ public class Growing : MonoBehaviour {
 			}
 		}
 		Destroy(this.GetComponent<Growing>());
-    }
+	}
 
 	//Vermerkt eventuell vorhandene Kindobjekte(Blaetter an einem Ast) in einem Vektor.
-	Vector3 checkChilds() {
-		if (this.transform.childCount > 0) {
+	Vector3 countChilds() {
+		if (gameObject.name.Contains ("Leaf")) {
+			Leaf2Wood ();
+		} else {
 			foreach (Transform child in this.transform) {
-				switch (child.gameObject.name.Substring(4)) {
+				switch (child.gameObject.name.Substring (4)) {
 				case "0":
 					childs += new Vector3 (1, 0, 0);
 					break;
@@ -60,15 +71,13 @@ public class Growing : MonoBehaviour {
 					break;
 				}
 			}
-		} else {
-			Leaf2Wood();
 		}
 		return childs;
 	}
 
 	//Tauscht Blatt- mit Ast-Element
 	void Leaf2Wood() {
-		gameObject.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+		//gameObject.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 		if (gameObject.transform.parent != null) {
 			gameObject.transform.Translate (0, -2, 0);
 			gameObject.transform.Translate (0, 1.4f * gameObject.transform.parent.transform.lossyScale.x, 0);
@@ -80,7 +89,7 @@ public class Growing : MonoBehaviour {
         Material wood_material = wood.GetComponent<MeshRenderer>().sharedMaterial;
 
         gameObject.GetComponent<MeshFilter>().mesh = wood_mesh;
-        gameObject.GetComponent<MeshRenderer>().material = material;
+        gameObject.GetComponent<MeshRenderer>().material = wood_material;
         gameObject.name = "Wood" + gameObject.name.Substring(4);
 	}
 

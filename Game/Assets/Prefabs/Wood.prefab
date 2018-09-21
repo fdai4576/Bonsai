@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23622412541406082}
   - component: {fileID: 114456764691751642}
   - component: {fileID: 114432870985035540}
-  - component: {fileID: 65666286217495280}
+  - component: {fileID: 65622386462642046}
   m_Layer: 0
   m_Name: Wood
   m_TagString: Tree
@@ -86,7 +86,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1743527214388142}
   m_Mesh: {fileID: 4300000, guid: 2aeb249e7f874014aabef268e6309d48, type: 3}
---- !u!65 &65666286217495280
+--- !u!65 &65622386462642046
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
