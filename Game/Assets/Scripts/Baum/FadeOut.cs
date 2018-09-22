@@ -17,7 +17,7 @@ public class FadeOut : MonoBehaviour {
 		m.EnableKeyword ("_ALPHABLEND_ON");
 		m.DisableKeyword ("_ALPHAPREMULTIPLY_ON");
 		m.renderQueue = 3000;
-		color = gameObject.GetComponent<MeshRenderer>().material.color;
+		color = m.color;
 	}
 	
 	// Update is called once per frame

@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour {
 
     //Zeigt/Lädt die Spielstände und versteckt das Hauptmenü 
     public void showSavegames() {
-        if(Laden.loaded) { 
+        if(!Laden.loaded) { 
             Laden.Load();
             Laden.loaded = true;
         }
@@ -56,6 +56,10 @@ public class MainMenu : MonoBehaviour {
         panel.SetActive(false);
         start_panel.SetActive(true);
 
+    }
+
+    public void Exit() {
+        Application.Quit();
     }
 
 }
