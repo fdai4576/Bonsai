@@ -6,10 +6,14 @@ public class Growing : MonoBehaviour {
 	private GameObject leaf;
 	private GameObject wood;
 	private Transform newParent;
-    //private Material material;
     private Vector3 childs;
 	string leafPath;
 	string woodPath;
+	BoxCollider box;
+
+	void start() {
+		
+	}
 
 	void setPrefabs() {
 		if (IngameMenu.textureOn) {
@@ -91,6 +95,10 @@ public class Growing : MonoBehaviour {
         gameObject.GetComponent<MeshFilter>().mesh = wood_mesh;
         gameObject.GetComponent<MeshRenderer>().material = wood_material;
         gameObject.name = "Wood" + gameObject.name.Substring(4);
+		//Passt Collider an neues Mesh an
+		box = GetComponent<BoxCollider>();
+		box.size = new Vector3(2, 4, 2);
+		box.center = new Vector3(0, 0, 0);
 	}
 
 	//Bringt neue Blaetter in Position

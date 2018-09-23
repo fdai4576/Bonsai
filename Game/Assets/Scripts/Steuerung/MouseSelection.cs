@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MouseSelection : MonoBehaviour {
-	Color original;
+	Color originalColor;
 	bool selected;
 	public Cutting cutting;
 
@@ -11,29 +11,31 @@ public class MouseSelection : MonoBehaviour {
 		cutting = this.GetComponent<Cutting>();
 	}
 
+	public void setOriginalColor() {
+		originalColor = GetComponent<Renderer>().material.color;
+	}
+
 	//Highlightet ein Objekt mittels Material-Farbe bei Mausberuehrung.
 	void OnMouseEnter(){
+		setOriginalColor();
 		if(!IngameMenu.menuOpened) {
 			selected = true;
-			original = GetComponent<Renderer>().material.color;
 			GetComponent<Renderer>().material.color = Color.red;
 		}
 	}
 
 	//Stellt Original Material-Farbe wieder her, wenn Maus Objekt verlaesst.
 	void OnMouseExit(){
-		if (!IngameMenu.menuOpened) {
-			selected = false;
-			GetComponent<Renderer> ().material.color = original;
-		}
+		selected = false;
+		GetComponent<Renderer> ().material.color = originalColor;
+
 	}
 
 	//Ruft bei Mausklick cutting-Script des Objekts auf und stellt Material-Farbe wieder her.
 	void OnMouseDown()
 	{
 		if (!IngameMenu.menuOpened) {
-			selected = false;
-			GetComponent<Renderer> ().material.color = original;
+			OnMouseExit ();
 			cutting.cutTree ();
 		}
 	}
@@ -41,7 +43,7 @@ public class MouseSelection : MonoBehaviour {
 	//Stellt Original Material-Farbe wieder her, wenn Ansicht gedreht wird
 	void Update () {
 		if (Input.GetMouseButton (1) && selected == true) {
-			GetComponent<Renderer>().material.color = original;
+			OnMouseExit ();
 		}
 	}
 }

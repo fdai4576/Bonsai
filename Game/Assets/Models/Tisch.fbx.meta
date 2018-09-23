@@ -3,12 +3,19 @@ guid: 439ad86635a879c4ea44928cb2cda923
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: Cube
+    100002: Cube.001
+    100004: //RootNode
+    400000: Cube
+    400002: Cube.001
+    400004: //RootNode
     2100000: Material.003
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cube
+    2300000: Cube
+    2300002: Cube.001
+    3300000: Cube
+    3300002: Cube.001
+    4300000: Cube.001
+    4300002: Cube
   externalObjects: {}
   materials:
     importMaterials: 1
