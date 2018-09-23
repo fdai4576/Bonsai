@@ -73,5 +73,7 @@ public class SaveGameToScene : MonoBehaviour {
             gameObjects.Add(go);
         }
 
+        gameObjects[0].AddComponent<GrowingRoot>();
+
     }
 }
