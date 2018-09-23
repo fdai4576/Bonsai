@@ -39,10 +39,9 @@ public class Growing : MonoBehaviour {
 	//Steuert den Wachstumsprozess eines Blatt- oder Ast-Elements.
 	void grow() {
 		setPrefabs ();
-		childs = countChilds();
+		countChilds();
 		checkChilds();
     }
-
 	//Prueft ob ein Kindobjekt fehlt und laesst dieses dann nachwachsen
 	void checkChilds() {
 		for (int i = 0; i < 3; i++) {
@@ -56,9 +55,8 @@ public class Growing : MonoBehaviour {
 		}
 		Destroy(this.GetComponent<Growing>());
 	}
-
 	//Vermerkt eventuell vorhandene Kindobjekte(Blaetter an einem Ast) in einem Vektor.
-	Vector3 countChilds() {
+	void countChilds() {
 		if (gameObject.name.Contains ("Leaf")) {
 			Leaf2Wood ();
 		} else {
@@ -78,7 +76,6 @@ public class Growing : MonoBehaviour {
 				}
 			}
 		}
-		return childs;
 	}
 
 	//Tauscht Blatt- mit Ast-Element
