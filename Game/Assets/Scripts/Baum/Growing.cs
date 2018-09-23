@@ -7,6 +7,7 @@ public class Growing : MonoBehaviour {
 	private GameObject wood;
 	private Transform newParent;
     private Vector3 childs;
+    private int countSpace;
 	string leafPath;
 	string woodPath;
 	BoxCollider box;

@@ -22,6 +22,10 @@ public class MouseSelection : MonoBehaviour {
 			selected = true;
 			GetComponent<Renderer>().material.color = Color.red;
 		}
+
+        if (Input.GetMouseButtonDown(0)) {
+            OnMouseDown();
+        }
 	}
 
 	//Stellt Original Material-Farbe wieder her, wenn Maus Objekt verlaesst.

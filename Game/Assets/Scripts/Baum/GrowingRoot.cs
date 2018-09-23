@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class GrowingRoot : MonoBehaviour {
 
+    private int countSpace;
+
 	//Fragt Leertasten-Input ab, um dann Wachstum zu initieren.
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Space)) {
+            countSpace++;
 			gameObject.transform.localScale += new Vector3 (0.2f*gameObject.transform.lossyScale.y, 0.2f*gameObject.transform.lossyScale.y, 0.2f*gameObject.transform.lossyScale.y);
+            if(countSpace == 9)
+            {
+                gameObject.AddComponent<Rigidbody>();
+            }
 		}
 	}
 }
